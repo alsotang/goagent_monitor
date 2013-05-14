@@ -14,13 +14,12 @@
 
     {
       "available": ["wwqgtxxproxy12-4", "wwqgtxxproxy12-5", ...], # 可用的 Appid 列表
-      "over_quota": ["wwqgtxxproxy1-1", "wwqgtxxproxy20-10", ...], # 超出配额的 Appid 列表
-      "available_str": "今日还剩 153 GB/295 GB 流量"
+      "over_quota": ["wwqgtxxproxy1-1", "wwqgtxxproxy20-10", ...] # 超出配额的 Appid 列表
     }
 
 ### 爬虫工作明细
 
-每五分钟抓取一次 fetch_config.py 中定义的各个 URL，并判断 URL 中包涵的 Appids 是否超出配额。
+每 10 分钟抓取一次 fetch_config.py 中定义的各个 URL，并判断 URL 中包涵的 Appids 是否超出配额。
 
 爬虫会把 URL 中的各个 Appid 加入任务队列等待 GAE 处理，我的任务队列设定是，每秒执行 10 个任务。也就是说，如果你的 GoAgent 集群有 500 个 Appid 的话，需要 50 s 来完成更新。
 

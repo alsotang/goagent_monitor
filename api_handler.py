@@ -31,8 +31,6 @@ class ApiHandler(webapp2.RequestHandler):
             elif val is False:
                 response_dict['over_quota'].append(appid)
 
-        response_dict['available_str'] = "今日还剩 %d GB/%d GB 流量" % (len(response_dict['available']), len(appids))
-
         response_json = json.dumps(response_dict, ensure_ascii=False)
 
         self.response.write(response_json)
