@@ -26,5 +26,15 @@
 
 ## 如何添加自定义监控列表
 
+监控列表配置文件示例：
+
+    config = {
+        # cluster_id
+        "wwqgtxx-goagent": {
+            "name": u"wwqgtxx-goagent's name", # cluster_name
+            "url": "https://wwqgtxx-goagent.googlecode.com/git/Appid.txt", # get appids from this url
+        },
+    }
+
 在 fetch\_config.py 中，按照示例的格式加进去就好了。查询的时候，用 `cluster_id' 进行查询。如： [https://goagentmonitor.appspot.com/api/wwqgtxx-goagent](https://goagentmonitor.appspot.com/api/wwqgtxx-goagent)
 
