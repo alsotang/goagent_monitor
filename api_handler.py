@@ -9,6 +9,7 @@ import json
 
 
 from fetch_config import config as fetch_config
+import lib
 
 
 class ApiHandler(webapp2.RequestHandler):
@@ -16,7 +17,8 @@ class ApiHandler(webapp2.RequestHandler):
         cluster_attrs = fetch_config[cluster_id]
 
         result = urlfetch.fetch(cluster_attrs['url'])
-        appids = result.content.split('|')
+        # appids = result.content.split('|')
+        appids = lib.getAppidFromINI(result.content)
 
         appid_dict = memcache.get_multi(appids)
 
