@@ -10,7 +10,7 @@
 
 这是一个搭建在 GAE 上的爬虫程序。它监视一个 Appid 列表，这些 Appid 上面都部署了 GoAgent。
 
-### 数据格式示例
+### 返回的数据格式示例
 
     {
       "available": ["wwqgtxxproxy12-4", "wwqgtxxproxy12-5", ...], # 可用的 Appid 列表
@@ -19,9 +19,9 @@
 
 ### 爬虫工作明细
 
-每 10 分钟抓取一次 fetch_config.py 中定义的各个 URL，并判断 URL 中包涵的 Appids 是否超出配额。
+每 10分钟 抓取一次 fetch_config.py 中定义的各个 URL，并判断 URL 中包涵的 Appids 是否超出配额。
 
-爬虫会把 URL 中的各个 Appid 加入任务队列等待 GAE 处理，我的任务队列设定是，每秒执行 10 个任务。也就是说，如果你的 GoAgent 集群有 500 个 Appid 的话，需要 50 s 来完成更新。
+爬虫会把 URL 中的各个 Appid 加入任务队列等待 GAE 处理，我的任务队列设定是，每秒执行 10 个任务。也就是说，如果你的 GoAgent 集群有 500 个 Appid 的话，需要 50s 来完成更新。
 
 ## 如何添加自定义监控列表
 
