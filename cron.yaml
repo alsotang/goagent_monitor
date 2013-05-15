@@ -1,4 +1,4 @@
 cron:
-- description: fetching sites of SCU
+- description: Check healthy of Appid list per 10 mins
   url: /start_fetch
   schedule: every 10 minutes
