@@ -38,3 +38,12 @@
 
 在 fetch\_config.py 中，按照示例的格式加进去就好了。查询的时候，用 `cluster_id' 进行查询。如： [https://goagentmonitor.appspot.com/api/wwqgtxx-goagent](https://goagentmonitor.appspot.com/api/wwqgtxx-goagent)
 
+# FAQ
+
+1. 如何部署一个自己的 monitor 服务？
+
+下载这个 repo 的代码，然后更改 app.yaml 里面的 `application: goagentmonitor` 字段，把 `goagentmonitor` 改成你自己的 Appid。
+
+接着，更改 fetch\_config.py 文件，加入你想监控的 GAE 集群列表。
+
+如果你想马上看到该服务的效果的话，以管理员身份访问一下 /start_fetch 这个地址来触发爬虫。
