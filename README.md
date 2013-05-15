@@ -14,7 +14,8 @@
 
     {
       "available": ["wwqgtxxproxy12-4", "wwqgtxxproxy12-5", ...], # 可用的 Appid 列表
-      "over_quota": ["wwqgtxxproxy1-1", "wwqgtxxproxy20-10", ...] # 超出配额的 Appid 列表
+      "over_quota": ["wwqgtxxproxy1-1", "wwqgtxxproxy20-10", ...], # 超出配额的 Appid 列表
+      "status_msg": "今日还剩 207GB/316GB 流量"
     }
 
 ### 爬虫工作明细
