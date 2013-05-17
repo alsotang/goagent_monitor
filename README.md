@@ -22,9 +22,19 @@
 
 每 10分钟 抓取一次 fetch_config.py 中定义的各个 URL，并判断 URL 中包涵的 Appids 是否超出配额。
 
-爬虫会把 URL 中的各个 Appid 加入任务队列等待 GAE 处理，我的任务队列设定是，每秒执行 10 个任务。也就是说，如果你的 GoAgent 集群有 500 个 Appid 的话，需要 50s 来完成更新。
+爬虫会把 URL 中的各个 Appid 加入任务队列等待 GAE 处理，我的任务队列设定是，每秒执行 10 个任务。也就是说，如果你的 GoAgent 集群有 500 个 Appid 的话，需要 50s 来完成一次全部抓取。
 
-## 如何添加自定义监控列表
+## FAQ
+
+1. 如何部署一个自己的 monitor 服务？
+
+下载这个 repo 的代码，然后更改 app.yaml 里面的 `application: goagentmonitor` 字段，把 `goagentmonitor` 改成你自己的 Appid。
+
+接着，更改 fetch\_config.py 文件，加入你想监控的 GAE 集群列表。
+
+如果你想马上看到该服务的效果的话，以管理员身份访问一下 /start_fetch 这个地址来触发爬虫。
+
+2. 如何添加自定义监控列表
 
 监控列表配置文件示例：
 
@@ -38,12 +48,13 @@
 
 在 fetch\_config.py 中，按照示例的格式加进去就好了。查询的时候，用 `cluster_id' 进行查询。如： [https://goagentmonitor.appspot.com/api/wwqgtxx-goagent](https://goagentmonitor.appspot.com/api/wwqgtxx-goagent)
 
-# FAQ
 
-1. 如何部署一个自己的 monitor 服务？
+## TODO
 
-下载这个 repo 的代码，然后更改 app.yaml 里面的 `application: goagentmonitor` 字段，把 `goagentmonitor` 改成你自己的 Appid。
+1. 缓存 Appid 列表
 
-接着，更改 fetch\_config.py 文件，加入你想监控的 GAE 集群列表。
+2. 一个 task 里面抓取多个 Appid 信息
 
-如果你想马上看到该服务的效果的话，以管理员身份访问一下 /start_fetch 这个地址来触发爬虫。
+3. 抓取时，放弃已经 503 的 Appid，并每天 flush 一次 memcache
+
+4. 支持更多 Appid 列表文件的格式
